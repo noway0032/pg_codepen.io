@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Data Reconciliation</title>
+  
+  
+  <link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css'>
+<link rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css'>
+<link rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/jquery.bootstrapvalidator/0.5.0/css/bootstrapValidator.min.css'>
+
+  
+  
+</head>
+
+<body>
+
+  <div class="container">
+  <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+    <fieldset>
+      <legend class="text-center">Adategyeztetés</legend>
+      <div class="form-group">
+        <label class="col-md-4 control-label" >Vezetéknév</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input name="last_name" placeholder="vezetéknév" class="form-control"  type="text" />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Keresztnév</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input  name="first_name" placeholder="keresztnév" class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">E-Mail cím</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+            <input name="email" placeholder="e-mail cím" class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Telefonszám #</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+            <input name="phone" placeholder="(1)234-5678, (30)234-5678" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group"> 
+        <label class="col-md-4 control-label">Ország</label>
+          <div class="col-md-4 selectContainer">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+              <select name="state" class="form-control selectpicker" >
+              <option value=" " >Kérjük, válassza ki állandó lakhelye országát!</option>
+                <option value="20">Amerika</option>
+                <option value="18">Ausztrália</option>
+                <option value="3">Ausztria</option>
+                <option value="17">Dél-Korea</option>
+                <option value="10">Egyesült Királyság</option>
+                <option value="12">Hollandia</option>
+                <option value="4">Horvátország</option>
+                <option value="13">Írország</option>
+                <option value="21">Izrael</option>
+                <option value="19">Kanada</option>
+                <option value="15">Litvánia</option>
+                <option value="1">Magyarország</option>
+                <option value="11">Németország</option>
+                <option value="5">Románia</option>
+                <option value="16">Spanyolország</option>
+                <option value="14">Svájc</option>
+                <option value="9">Svédország</option>
+                <option value="7">Szerbia</option>
+                <option value="2">Szlovákia</option>
+                <option value="8">Ukrajna</option>
+                <option value="99">Egyéb</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Település</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <input name="city" placeholder="település neve" class="form-control"  type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Cím</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <input name="address" placeholder="utca, házszám, emelet, ajtó" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Irányítószám</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+            <input name="zip" placeholder="irányítószám" class="form-control" type="text">
+          </div>
+      </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Személyes weboldal címe</label>  
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+            <input name="website" placeholder="személyes weboldal címe" class="form-control" type="text">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Do you have hosting?</label>
+        <div class="col-md-4">
+          <div class="radio">
+            <label>
+              <input type="radio" name="hosting" value="1" /> igen
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="hosting" value="0" /> nem
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label">Személyes megjegyzés</label>
+        <div class="col-md-4 inputGroupContainer">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+            <textarea class="form-control" name="comment" placeholder="személyes megjegyzés"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <div class="alert col-12 alert-success" role="alert" id="success_message">
+        <i class="glyphicon glyphicon-thumbs-up"></i> Sikeres regisztráció! 
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4 text-center">
+          <button type="submit" class="btn btn-warning" >
+            Küldés <span class="glyphicon glyphicon-send"></span>
+          </button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js'></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-validator/0.4.5/js/bootstrapvalidator.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
