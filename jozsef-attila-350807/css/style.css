@@ -1,0 +1,114 @@
+html,
+body {
+  background: #000;
+  height: 100%;
+  width: 100%;
+}
+
+.master {
+  fill: #fff;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  max-width: 50%;
+  max-height: 70%;
+  overflow: visible;
+  font-family: 'Bebas Neue';
+  font-weight: 400;
+}
+
+.cls-1,
+.cls-10,
+.cls-11,
+.cls-13,
+.cls-2,
+.cls-23,
+.cls-3,
+.cls-5,
+.cls-6,
+.cls-7,
+.cls-8 {
+  font-weight: 700;
+}
+
+.cls-1 {
+  font-size: 81px;
+}
+
+.cls-2 {
+  font-size: 51px;
+}
+
+.cls-3 {
+  font-size: 79px;
+}
+
+.cls-4 {
+  font-weight: 100;
+}
+
+.cls-21,
+.cls-5 {
+  font-size: 48px;
+}
+
+.cls-10,
+.cls-12,
+.cls-6 {
+  fill: #606161;
+}
+
+.cls-6 {
+  font-size: 111px;
+}
+
+.cls-7 {
+  font-size: 32px;
+}
+
+.cls-8 {
+  font-size: 72px;
+}
+
+.cls-9 {
+  font-size: 49px;
+  font-weight: 100;
+}
+
+.cls-10,
+.cls-11,
+.cls-16 {
+  font-size: 63px;
+}
+
+.cls-13 {
+  font-size: 71px;
+}
+
+.cls-17 {
+  font-size: 60px;
+}
+
+.cls-18 {
+  font-size: 57px;
+}
+
+.cls-19 {
+  font-size: 54px;
+}
+
+.cls-20 {
+  font-size: 50px;
+}
+
+.cls-22 {
+  font-size: 44px;
+}
+
+.cls-23 {
+  font-size: 36px;
+}
