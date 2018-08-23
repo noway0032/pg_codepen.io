@@ -1,0 +1,18 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.ring {
+  display: flex;
+  align-items: center;
+}
+
+.el {
+  position: absolute;
+  width: 1px;
+  height: 10vh;
+  margin-top: 0vh;
+  -webkit-transform-origin: 10% 100%;
+          transform-origin: 10% 100%;
+}
