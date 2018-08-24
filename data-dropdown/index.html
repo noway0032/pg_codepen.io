@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>  Data Dropdown</title>
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+
+  
+      <style>
+      /* NOTE: The styles were added inline because Prefixfree needs access to your styles and they must be inlined if they are on local disk! */
+      body {
+  font: normal 14px/100% "Andale Mono", AndaleMono, monospace;
+  background-color: #374954;
+}
+*{
+  color: #fff;
+}
+.dropdown {
+  display: block;
+  margin: 20px auto;
+  max-width: 400px;
+  position: relative;
+}
+.dropdown .master {
+  display: flex;
+}
+.dropdown .master a,
+.dropdown .master a:visited {
+  background-color: #4F6877;
+  text-decoration: none;
+  outline: none;
+  font-size: 12px;
+  padding: 8px 18px 5px 10px;
+  line-height: 24px;
+  width: 100%;
+}
+button {
+  background-color: #6BBE92;
+  padding: 10px 15px 10px 12px;
+  border: 0;
+  text-align: center;
+  font-weight: bold;
+}
+.dropdown .mutliSelect ul{
+  position: relative;
+  background-color: #4F6877;
+  display: none;
+  position: absolute;
+  padding: 2px 15px 2px 5px;
+  top: 2px;
+  width: 95%;
+  height: 110px;
+  overflow: auto;
+}
+    </style>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="dropdown">
+  <div class="master">
+    <a href="#">
+      <span class="hida">Ide kattintha jelölhet ki elemeket</span>
+      <p class="multiSel"></p>
+    </a>
+    <button>Szűrés</button>
+  </div>
+  <div class="mutliSelect">
+    <ul>
+      <li><input type="checkbox" value="Alma" />Alma</li>
+      <li><input type="checkbox" value="Körte" />Körte</li>
+      <li><input type="checkbox" value="Barack" />Barack</li>
+      <li><input type="checkbox" value="Narancs" />Narancs</li>
+      <li><input type="checkbox" value="Szilva" />Szilva</li>
+      <li><input type="checkbox" value="Datoja" />Datoja</li>
+    </ul>
+  </div>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
