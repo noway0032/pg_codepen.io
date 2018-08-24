@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #616574;
+}
+
+.box {
+    width: 28em;
+    height: 28em;
+    font-size: 4px;
+    color: cornsilk;
+    background-color: currentColor;
+    box-shadow: 0 0 0 6em;
+    border-radius: 1.5em;
+    position: relative;
+    --b: 1em solid darkslategray;
+}
+
+.box * {
+    position: absolute;
+    border: var(--b);
+    box-sizing: border-box;
+    transition: 1s;
+}
+
+.box *::before,
+.box *::after {
+    content: '';
+    position: absolute;
+}
+
+.calendar {
+    width: 28em;
+    height: 28em;
+    background: linear-gradient(#0887b6 25%, white 30%);
+    border-radius: 2em;
+    top: 0em;
+    right: 0em;
+    transform: rotate(15deg);
+}
+
+.calendar::before {
+    width: 3em;
+    height: 4em;
+    color: #c5c8d4;
+    background-color: currentColor;
+    top: -2em;
+    left: 4em;
+    border-radius: 100% 100% 50% 50%;
+    box-shadow:
+        0 0, 0 0 0 1em darkslategray,
+        15em 0, 15em 0 0 1em darkslategray;
+}
+
+.calendar::after {
+    width: 3em;
+    height: 3em;
+    color: silver;
+    background-color: currentColor;
+    top: 10em;
+    left: 4em;
+    border-radius: 0.4em;
+    box-shadow:
+        0 0, 5em 0, 10em 0, 15em 0,
+        0 5em, 5em 5em, 10em 5em, 15em 5em,
+        0 10em, 5em 10em, 10em 10em, 15em 10em;
+}
+
+.box:hover .calendar {
+    top: 0;
+    right: 0;
+    transform: rotate(-15deg) scale(1.5);
+}
+/* words */
+
+.box p {
+    color: darkslategray;
+    font-size: 3em;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+    border: none;
+    top: 0.4em;
+    left: 3.2em;
+    transform: rotate(15deg) scale(0);
+}
+
+.box:hover p {
+    top: -1em;
+    left: 1.4em;
+    transform: rotate(-15deg) scale(1.5);
+}
