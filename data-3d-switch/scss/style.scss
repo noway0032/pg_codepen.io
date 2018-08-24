@@ -1,0 +1,70 @@
+$w: 12rem;
+$h: .5*$w;
+$a: 90deg 22.5deg 22.5deg;
+
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	height: 100vh;
+	perspective-origin: calc(50% + #{$w}) calc(50% - #{$w});
+	perspective: 32em;
+  background-color: #616574;
+}
+[type='checkbox'] {
+	position: absolute;
+	left: -100vw;
+	+ label {
+		--s: 0;
+		position: relative;
+		border: solid 0.2*$h #f0f0f0;
+		width: $w; 
+    height: $h;
+		border-radius: $h;
+		transform-style: preserve-3d;
+		transform: rotatex(nth($a, 1)) rotate(nth($a, 3)) rotatey(nth($a, 2));
+		box-shadow: 
+			.5rem .875rem 0 -.25rem #e0e0e0, 
+			.625rem .625rem 0 -.25rem #e0e0e0, 
+			.5rem .875rem .625rem -.125rem rgba(#bfbfbf, .75), 
+			inset .125rem -.125rem .5rem rgba(#f5f5f5, .5), 
+			inset .75rem .75rem #dfdfdf, 
+			inset .75rem .75rem .75rem rgba(#bfbfbf, .85), 
+			inset 0 1rem .75rem rgba(#bfbfbf, .65);
+		font-size: 0;
+		-webkit-tap-highlight-color: transparent;
+		cursor: pointer;
+		&:before, 
+    &:after {
+			position: absolute;
+			width: $h; 
+      height: $h;
+			border-radius: 50%;
+			transition: .35s cubic-bezier(.21, .61, .35, 1);
+			content: ''
+		}
+		
+		&:before {
+			top: calc(50% + .875rem);
+			transform-origin: 100% 0;
+			transform: translate(calc(var(--s)*(100% + 1rem))) scale(.8) skewx(-22.5deg);
+			background: radial-gradient(at 50% 25%, rgba(#a0a0a0, .65), transparent 70%);
+			filter: blur(3px)
+		}
+		&:after {
+			top: 2rem; 
+      left: 1.1rem;
+			transform: translate(calc(var(--s)*(100% + 1rem))) 
+				rotatey(-1*nth($a, 2))
+				rotate(-1*nth($a, 3)) 
+				rotatex(-1*nth($a, 1)) 
+				translatey(-50%) rotate(45deg);
+			box-shadow: -1px 1px .125rem rgba(#ceffce, 1.5);
+			background: radial-gradient(at 0 50%, #52a085, transparent 2.5rem) 0 50%/65% 50% no-repeat, 
+        radial-gradient(at 50% 0%, #49cb74 15%, #89eca5 35%, #48945d, #5a976d 65%) 50%/200%;
+			filter: Grayscale(calc(1 - var(--s)))
+		}
+	}
+	&:checked + label { --s: 1 }
+}
