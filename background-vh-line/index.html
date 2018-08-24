@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Background VH Line</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <script id="fragmentShader" type="x-shader/x-fragment">
+  uniform vec2 u_resolution;
+  uniform vec2 u_mouse;
+  uniform float u_time;
+  uniform sampler2D u_noise;
+  uniform sampler2D u_buffer;
+  uniform bool u_renderpass;
+  uniform int u_frame;
+  #define PI 3.141592653589793
+  #define TAU 6.283185307179586
+  const float adder = 0.5;
+  const float movementThreshold = .3;
+  const float distanceThreshold = 4.;
+  vec2 hash2(vec2 p)
+  {
+    vec2 n = p;
+    return vec2(fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453), fract(sin(dot(n, vec2(52.9898, -3.1414))) * 43758.5453));
+    vec2 o = texture2D( u_noise, (p+0.5)/256.0, -100.0 ).xy;
+    return o;
+  }
+  #define pow2(x) (x * x)
+  const int samples = 8;
+  const float sigma = float(samples) * 0.25;
+  float gaussian(vec2 i) {
+      return 1.0 / (2.0 * PI * pow2(sigma)) * exp(-((pow2(i.x) + pow2(i.y)) / (2.0 * pow2(sigma))));
+  }
+  vec3 hash33(vec3 p){
+      float n = sin(dot(p, vec3(7, 157, 113)));    
+      return fract(vec3(2097152, 262144, 32768)*n); 
+  }
+  vec3 blur(sampler2D sp, vec2 uv, vec2 scale) {
+      vec3 col = vec3(0.0);
+      float accum = 0.0;
+      float weight;
+      vec2 offset;
+      for (int x = -samples / 2; x < samples / 2; ++x) {
+          for (int y = -samples / 2; y < samples / 2; ++y) {
+              offset = vec2(x, y);
+              weight = gaussian(offset);
+              col += texture2D(sp, uv + scale * offset).rgb * weight;
+              accum += weight;
+          }
+      }
+      return col / accum;
+  }
+  vec3 hsb2rgb( in vec3 c ){
+    vec3 rgb = clamp(abs(mod(c.x*6.0+vec3(0.0,4.0,2.0),
+                             6.0)-3.0)-1.0,
+                     0.0,
+                     1.0 );
+    rgb = rgb*rgb*(3.0-2.0*rgb);
+    return c.z * mix( vec3(1.0), rgb, c.y);
+  }
+  vec3 domain(vec2 z){
+    return vec3(hsb2rgb(vec3(atan(z.y,z.x)/TAU,1.,1.)));
+  }
+  vec3 colour(vec2 z) {
+      return domain(z);
+  }
+  void main() {
+    vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / min(u_resolution.y, u_resolution.x);
+    vec2 sample = gl_FragCoord.xy / u_resolution.xy;
+    vec2 texStep = 1. / u_resolution.xy;
+    vec2 mouse = u_mouse.xy - uv;
+    float shade = smoothstep(.1, .15, length(mouse));
+    vec4 fragcolour = vec4(shade);
+    if(u_renderpass == true) {
+      fragcolour = texture2D(u_buffer, sample);
+      vec2 hash = hash2(uv*512.);
+      if(u_frame < 2) {
+        fragcolour = vec4(hash.x >= .999, hash.y, 0., 0.);
+      } else {
+        vec4 t = texture2D(u_buffer, sample + (vec2(0., 1.) * texStep));
+        vec4 r = texture2D(u_buffer, sample + (vec2(1., 0.) * texStep));
+        vec4 b = texture2D(u_buffer, sample + (vec2(0., -1.) * texStep));
+        vec4 l = texture2D(u_buffer, sample + (vec2(-1., 0.) * texStep));
+        if(fragcolour.x < 1.) {
+          if(t.x >= movementThreshold && t.y < 0.25) {
+            fragcolour.x += adder;
+            b = texture2D(u_buffer, sample + vec2(0., -distanceThreshold) * texStep);
+            if(b.x >= 0.2) {
+              fragcolour.y = 0.25;
+            } else {
+              fragcolour.y = 0.;
+            }
+            fragcolour.z = 0.;
+          } else if(r.x >= movementThreshold && floor(r.y * 4.) == 1.) {
+            fragcolour.x += adder;
+            l = texture2D(u_buffer, sample + vec2(-distanceThreshold, 0.) * texStep);
+            if(l.x >= 0.2) {
+              fragcolour.y = 0.51;
+            } else {
+              fragcolour.y = 0.26;
+            }
+            fragcolour.z = 0.25;
+          } else if(b.x >= movementThreshold && floor(b.y * 4.) == 2.) {
+            fragcolour.x += adder;
+            t = texture2D(u_buffer, sample + vec2(0., distanceThreshold) * texStep);
+            if(t.x >= 0.2) {
+              fragcolour.y = .76;
+            } else {
+              fragcolour.y = 0.51;
+            }
+            fragcolour.z = .5;
+          } else if(l.x >= movementThreshold && floor(l.y * 4.) == 3.) {
+            fragcolour.x += adder;
+            r = texture2D(u_buffer, sample + vec2(distanceThreshold, 0.) * texStep);
+            if(r.x >= 0.2) {
+              fragcolour.y = 0.;
+            } else {
+              fragcolour.y = 0.76;
+            }
+            fragcolour.z = 0.75;
+          }
+        }
+      }
+    } else {
+      vec4 _fragcolour = texture2D(u_buffer, sample);
+      fragcolour = vec4(_fragcolour.x);
+    }
+    gl_FragColor = fragcolour;
+  }
+</script>
+<div id="container" touch-action="none"></div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/three.js/88/three.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>
