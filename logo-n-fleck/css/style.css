@@ -1,0 +1,79 @@
+.logo {
+  width: 253.3333333333px;
+  display: block;
+  position: absolute;
+  top: 40%;
+  left: 45%;
+  margin-left: -75px;
+  margin-top: -75px;
+}
+.logo:first-child {
+  margin-right: 13.3333333333px;
+}
+.logo .row {
+  height: 40px;
+  margin-bottom: 13.3333333333px;
+}
+.logo .row span {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: #eeeeee;
+  display: block;
+  float: left;
+  transition: all 0.3s ease;
+}
+.logo .row span:not(:last-child) {
+  margin-right: 13.3333333333px;
+}
+.logo.show--n .row:first-child span:first-child {
+  animation: fadeIn 1s 0.2666666667s infinite forwards ease;
+}
+.logo.show--n .row:first-child span:last-child {
+  animation: fadeIn 1s 0.8s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(2) span:first-child {
+  animation: fadeIn 1s 0.2s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(2) span:nth-child(2) {
+  animation: fadeIn 1s 0.3333333333s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(2) span:last-child {
+  animation: fadeIn 1s 0.7333333333s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(3) span:first-child {
+  animation: fadeIn 1s 0.1333333333s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(3) span:nth-child(3) {
+  animation: fadeIn 1s 0.4s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(3) span:last-child {
+  animation: fadeIn 1s 0.6666666667s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(4) span:first-child {
+  animation: fadeIn 1s 0.0666666667s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(4) span:nth-child(4) {
+  animation: fadeIn 1s 0.4666666667s infinite forwards ease;
+}
+.logo.show--n .row:nth-child(4) span:last-child {
+  animation: fadeIn 1s 0.6s infinite forwards ease;
+}
+.logo.show--n .row:last-child span:first-child {
+  animation: fadeIn 1s 0s infinite forwards ease;
+}
+.logo.show--n .row:last-child span:last-child {
+  animation: fadeIn 1s 0.5333333333s infinite forwards ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    background: #eeeeee;
+  }
+  20% {
+    background: #bc9f17;
+  }
+  100% {
+    background: #eeeeee;
+  }
+}
