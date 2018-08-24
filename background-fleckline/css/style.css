@@ -1,0 +1,8 @@
+body{
+  margin:0;
+  background-color: #323840;
+}
+canvas{
+  display: block;
+  vertical-align: bottom;
+}
