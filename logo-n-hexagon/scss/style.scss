@@ -1,0 +1,100 @@
+@import "compass/css3";
+$front-color: #bc9f17;
+$back-color: #4c4f5a;
+$bg-color: black;
+$border-color: #bc9f17;
+
+@mixin hex-border($angle) {
+  width: 170px;
+  height: 115px;
+  position: absolute;
+  border-left: 15px solid $border-color;
+  border-right: 15px solid $border-color;
+  @include transform(rotate($angle)); 
+}
+@mixin size-and-position($top,$left,$w,$h) {
+  position: absolute;
+  top: $top;
+  left: $left;
+  width: $w;
+  height: $h;
+}
+
+body{
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  height: 100%;
+  background-attachment: fixed;
+}
+#wrap {
+  position: absolute;
+  top: 40%;
+  margin-bottom: -50%;
+  left: 40%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-family: Arial, Helvetica;
+  background: $bg-color;
+}
+
+.hex-background {
+  @include size-and-position(10px,10px,180px,100px);
+  opacity: 0.5;
+  background: $bg-color;
+  &:before {
+    content: "";
+    position: absolute;
+    top: -55px;
+    border: {
+      left: 90px solid transparent;
+      right: 90px solid transparent;
+      bottom: 55px solid black;
+    }
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: -55px;
+    border: {
+      left: 90px solid transparent;
+      right: 90px solid transparent;
+      top: 55px solid black;
+    }
+  }
+}
+
+.hex-borders-l-r {
+  @include hex-border(0deg);
+}
+.hex-borders-ul-lr {
+  @include hex-border(60deg);
+}
+.hex-borders-ll-ur {
+  @include hex-border(-60deg);
+}
+
+#n-left {
+  @include size-and-position(5px,40px,0px,75px);
+  border-right: 30px solid $front-color;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+}
+#n-center-front {
+  background: $front-color;
+  @include size-and-position(36px,70px,60px,45px);
+  @include transform(skewY(46deg));
+}
+#n-center-rear {
+  background: $back-color;
+  @include size-and-position(36px,70px,60px,45px);
+  @include transform(skewY(-46deg));
+}
+#n-right {
+  @include size-and-position(5px,130px,0px,75px);
+  border-left: 30px solid $front-color;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+}

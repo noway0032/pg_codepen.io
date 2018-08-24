@@ -1,0 +1,130 @@
+body {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  height: 100%;
+  background-attachment: fixed;
+}
+
+#wrap {
+  position: absolute;
+  top: 40%;
+  margin-bottom: -50%;
+  left: 40%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  font-family: Arial, Helvetica;
+  background: black;
+}
+
+.hex-background {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 180px;
+  height: 100px;
+  opacity: 0.5;
+  background: black;
+}
+.hex-background:before {
+  content: "";
+  position: absolute;
+  top: -55px;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  border-bottom: 55px solid black;
+}
+.hex-background:after {
+  content: "";
+  position: absolute;
+  bottom: -55px;
+  border-left: 90px solid transparent;
+  border-right: 90px solid transparent;
+  border-top: 55px solid black;
+}
+
+.hex-borders-l-r {
+  width: 170px;
+  height: 115px;
+  position: absolute;
+  border-left: 15px solid #bc9f17;
+  border-right: 15px solid #bc9f17;
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.hex-borders-ul-lr {
+  width: 170px;
+  height: 115px;
+  position: absolute;
+  border-left: 15px solid #bc9f17;
+  border-right: 15px solid #bc9f17;
+  -moz-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  -webkit-transform: rotate(60deg);
+  transform: rotate(60deg);
+}
+
+.hex-borders-ll-ur {
+  width: 170px;
+  height: 115px;
+  position: absolute;
+  border-left: 15px solid #bc9f17;
+  border-right: 15px solid #bc9f17;
+  -moz-transform: rotate(-60deg);
+  -ms-transform: rotate(-60deg);
+  -webkit-transform: rotate(-60deg);
+  transform: rotate(-60deg);
+}
+
+#n-left {
+  position: absolute;
+  top: 5px;
+  left: 40px;
+  width: 0px;
+  height: 75px;
+  border-right: 30px solid #bc9f17;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+}
+
+#n-center-front {
+  background: #bc9f17;
+  position: absolute;
+  top: 36px;
+  left: 70px;
+  width: 60px;
+  height: 45px;
+  -moz-transform: skewY(46deg);
+  -ms-transform: skewY(46deg);
+  -webkit-transform: skewY(46deg);
+  transform: skewY(46deg);
+}
+
+#n-center-rear {
+  background: #4c4f5a;
+  position: absolute;
+  top: 36px;
+  left: 70px;
+  width: 60px;
+  height: 45px;
+  -moz-transform: skewY(-46deg);
+  -ms-transform: skewY(-46deg);
+  -webkit-transform: skewY(-46deg);
+  transform: skewY(-46deg);
+}
+
+#n-right {
+  position: absolute;
+  top: 5px;
+  left: 130px;
+  width: 0px;
+  height: 75px;
+  border-left: 30px solid #bc9f17;
+  border-top: 16px solid transparent;
+  border-bottom: 16px solid transparent;
+}
